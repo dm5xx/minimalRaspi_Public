@@ -1,0 +1,79 @@
+<html>
+<style>
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 500px; /* Full-width */
+  height: 100px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  margin-top: 50px;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 100px; /* Set a specific slider handle width */
+  height: 100px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+</style>
+
+<body>
+	<div class="slidecontainer">
+	  <input type="range" min="0" max="9" value="1" class="slider" id="myRange">
+	</div>
+	<div id="demo">dddd</div>
+
+<script>
+	
+	let client = new WebSocket("ws://192.168.97.213:2999/D0/C/0"); 
+
+	client.onopen = () => {};
+	client.onclose = () => { alert("somebody closed");};
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+
+var oldSliderValue = slider.value;
+output.innerHTML = slider.value; // Display the default slider value
+let direction = -1;
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+  output.innerHTML = this.value;
+
+  if(this.value < oldSliderValue)
+    direction = 0;
+  else
+    direction = 1;
+  
+  oldSliderValue = this.value;
+  client.send(direction);
+}
+
+</script>
+</body>
+</html>

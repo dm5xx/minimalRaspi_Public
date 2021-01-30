@@ -1,0 +1,1 @@
+sudo ps -fC node

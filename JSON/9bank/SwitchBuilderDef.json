@@ -1,0 +1,21 @@
+{
+    "S0": {
+        "Type": "MCP",
+        "NumberOfBanks": 3,
+        "FirstBankNr": 0,
+        "LastBankNr": 2
+    },
+    "S1": {
+        "Type": "Big32",
+        "NumberOfBanks": 2,
+        "FirstBankNr": 3,
+        "LastBankNr": 4
+    },
+    "S2": {
+        "Type": "LAN",
+        "NumberOfBanks": 4,
+        "FirstBankNr": 5,
+        "LastBankNr": 8,
+        "Ip_Port": "192.168.97.209:59"
+    }
+}

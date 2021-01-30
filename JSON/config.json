@@ -1,0 +1,17 @@
+{
+    "NumberOfBanks": 6,
+    "EnableTimerProfile": 0,
+    "ActiveTimerProfile": "TimerProfile1",
+    "DeviceMapping": "DeviceMapping",
+    "LogToConsole": 1,
+    "LogToFile": 0,
+    "EnableWebSockets": 0,
+    "WatchDogPersistTime": 5000,
+    "WatchDogTimerProfileTime": 5000,
+    "ExternalPowerModeDelay": 2000,
+    "ExternalPowerMode": 1,
+    "ResetOnStartup": 0,
+    "Port": 3000,
+    "EnableBroadcastListening": 0,
+    "BroadcastSystemMapping": "wpxssb2020"
+}

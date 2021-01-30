@@ -1,0 +1,11 @@
+{
+    "NumberOfBanks": 9,
+    "ActiveTimerProfile": "TimerProfile1.json",
+    "LogToConsole": 1,
+    "LogToFile": 0,
+    "WatchDogPersistTime": 5000,
+    "WatchDogTimerProfileTime": 5000,
+    "ResetOnStartup": 1,
+    "Port": 3000,
+    "SwitcherType": "Big32"
+}

@@ -1,0 +1,15 @@
+{
+    "S1" : {
+        "Type" : "Big32",
+        "NumberOfBanks" : 2,
+        "FirstBankNr" : 0,
+        "LastBankNr" : 1        
+    },
+    "S2" : {
+        "Type" : "LAN",
+        "NumberOfBanks" : 4,
+        "FirstBankNr" : 2,
+        "LastBankNr" : 5,        
+        "Ip_Port" : "192.168.97.209:59"
+    }
+}

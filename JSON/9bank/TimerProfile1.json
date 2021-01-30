@@ -1,0 +1,10 @@
+{
+	"Uber1": {
+    "Hour": 10,
+    "Minute": 1,
+    "BankNr": 0,
+    "Value": 16,
+    "IsActivated": 1,
+    "IsCurrentlyExec": 0
+}
+}

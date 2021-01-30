@@ -1,0 +1,9 @@
+[
+    {
+      "Id" : 1,
+      "RadioNr" : 1,
+      "Ip" : "192.168.97.2",
+      "Mapping": "20_15_complete",
+      "ContestLogType": "N1MM"
+    }
+]

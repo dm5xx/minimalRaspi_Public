@@ -1,0 +1,31 @@
+{
+    "Id" : "0",
+    "NumberOfKeys" : 4,
+    "Type" : "dynamic",
+    "KeyCommands" : {
+        "K0" : {
+            "Bank" : [3],
+            "Command" : [["1000"]],
+            "StartPin": [[4]],
+            "Type" : 3 
+        },
+        "K1" : {
+            "Bank" : [3],
+            "Command" : [["0100"]],
+            "StartPin": [[4]],
+            "Type" : 3 
+        },
+        "K2" : {
+            "Bank" : [3],
+            "Command" : [["0010"]],
+            "StartPin": [[4]],
+            "Type" : 3
+        },
+        "K3" : {
+            "Bank" : [3],
+            "Command" : [["0001"]],
+            "StartPin": [[4]],
+            "Type" : 3
+        }
+    }
+}

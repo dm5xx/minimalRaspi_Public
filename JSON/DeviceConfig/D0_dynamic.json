@@ -1,0 +1,43 @@
+{
+    "Id" : "0",
+    "NumberOfKeys" : 6,
+    "Type" : "dynamic",
+    "KeyCommands" : {
+        "K0" : {
+            "Bank" : [4],
+            "Command" : [["100000"]],
+            "StartPin": [[1]],
+            "Type" : 3 
+        },
+        "K1" : {
+            "Bank" : [4],
+            "Command" : [["010000"]],
+            "StartPin": [[1]],
+            "Type" : 3 
+        },
+        "K2" : {
+            "Bank" : [4],
+            "Command" : [["001000"]],
+            "StartPin": [[1]],
+            "Type" : 3
+        },
+        "K3" : {
+            "Bank" : [4],
+            "Command" : [["000100"]],
+            "StartPin": [[1]],
+            "Type" : 3
+        },
+        "K4" : {
+            "Bank" : [4],
+            "Command" : [["000010"]],
+            "StartPin": [[1]],
+            "Type" : 3
+        },
+        "K5" : {
+            "Bank" : [4],
+            "Command" : [["000001"]],
+            "StartPin": [[1]],
+            "Type" : 3
+        }
+    }
+}

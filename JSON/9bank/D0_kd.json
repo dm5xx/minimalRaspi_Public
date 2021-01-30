@@ -1,0 +1,43 @@
+{
+    "Name" : "MyFirstDevice",
+    "NumberOfKeys" : 16,
+    "NumberOfBanks" : 4,
+    "KeyCommands" : {
+        "K1" : {
+            "Bank" : [0],
+            "Command" : [2],
+            "StartPin": [],
+            "Type" : 1 
+        },
+        "K2" : {
+            "Bank" : [0],
+            "Command" : [39],
+            "StartPin": [],
+            "Type" : 1
+        },
+        "K3" : {
+            "Bank" : [0],
+            "Command" : [78],
+            "StartPin": [],
+            "Type" : 1 
+        },
+        "K4" : {
+            "Bank" : [0],
+            "Command" : [0],
+            "StartPin": [],
+            "Type" : 1 
+        },
+        "K5" : {
+            "Bank" : [0,1],
+            "Command" : [[1,7,9],[1,7,9]],
+            "StartPin": [],
+            "Type" : 2 
+        },
+        "K6" : {
+            "Bank" : [0,1],
+            "Command" : [["111"], ["11111"]],
+            "StartPin": [[4],[7]],
+            "Type" : 3 
+        }
+    }
+}

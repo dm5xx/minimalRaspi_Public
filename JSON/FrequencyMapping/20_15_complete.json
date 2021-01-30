@@ -1,0 +1,16 @@
+[
+    {
+      "Id" : "1",
+      "DeviceName" : "D0",
+      "MinFrequency" : 1400000,
+      "MaxFrequency" : 1440000,
+      "Key" : "0"
+    },
+    {
+      "Id" : "2",
+      "DeviceName" : "D0",
+      "MinFrequency" : 2100000,
+      "MaxFrequency" : 2150000,
+      "Key" : "4"
+    }
+]
