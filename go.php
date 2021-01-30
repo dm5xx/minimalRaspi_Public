@@ -8,7 +8,7 @@ if($p != $token["Token"])
     return;
 
 ?>
-<link rel="stylesheet" type="text/css" href="minimal_control/style.css" media="screen"/>
+<link rel="stylesheet" type="text/css" href="http://h.mmmedia-online.de/minimal63/style.css" media="screen"/>
 <script language="javascript" type="text/javascript" src="http://h.mmmedia-online.de/minimal63/init.js"></script>
 <script language="javascript" type="text/javascript" src="http://h.mmmedia-online.de/minimal63/ShortCut.js"></script>
 <script language="javascript" type="text/javascript" src="Admin/CustomCustomCreator.php?p=<?php echo $p;?>&file=Custom_sc"></script>

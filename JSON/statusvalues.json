@@ -1,8 +1,10 @@
 {
     "StatusValueBank0": 1,
-    "StatusValueBank1": 0,
-    "StatusValueBank2": 0,
+    "StatusValueBank1": 4,
+    "StatusValueBank2": 8,
     "StatusValueBank3": 0,
-    "StatusValueBank4": 0,
-    "StatusValueBank5": 0
+    "StatusValueBank4": 8,
+    "StatusValueBank5": 16,
+    "StatusValueBank6": 8,
+    "StatusValueBank7": 16
 }
