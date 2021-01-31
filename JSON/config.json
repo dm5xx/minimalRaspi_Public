@@ -6,6 +6,7 @@
     "LogToConsole": 1,
     "LogToFile": 0,
     "EnableWebSockets": 0,
+    "MessageLifetime" : 60000,
     "WatchDogPersistTime": 5000,
     "WatchDogTimerProfileTime": 5000,
     "ExternalPowerModeDelay": 2000,

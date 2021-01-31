@@ -9,6 +9,8 @@ if($p != $token["Token"])
 
 ?>
 
+window.setInterval(GetMessages, 20000);
+
 var myHeaders = new Headers();
 myHeaders.append('Content-Type', 'application/json');
 myHeaders.append("Authorization", "<?php echo "Basic ". base64_encode("admin:".$p);?>");
@@ -26,6 +28,31 @@ function GetStatus()
             else
                 UpdateUI(data);
             console.log(data);
+        })
+        .catch((err) => {
+            console.log("Client Error: "+err);
+        });
+}
+
+function GetMessages()
+{
+    console.log("GetMessage is requested");
+            
+    fetch('http://'+url+'/Message', { headers: myHeaders, timeout : 2000})
+        .then((response) => { return response.json()})
+        .then((data) => {            
+            console.log(data);
+            
+            if(data[0].Time == 0)
+                return;
+
+            var result = "";
+
+            for(let a=0; a < data.length; a++ )
+            {
+                result += data[a].Content.Text+"\r";
+            }
+            alert(result);
         })
         .catch((err) => {
             console.log("Client Error: "+err);
