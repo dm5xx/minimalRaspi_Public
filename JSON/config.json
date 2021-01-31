@@ -8,6 +8,8 @@
     "EnableWebSockets": 0,
     "MessageServiceEnable": 1,
     "MessageLifetime" : 60000,
+    "PingServiceEnabled": 1,
+    "PingInterval" : 5000,
     "WatchDogPersistTime": 5000,
     "WatchDogTimerProfileTime": 5000,
     "ExternalPowerModeDelay": 2000,
