@@ -33,11 +33,35 @@ body{
 
 </style>
 <script>
+var arcname = "";
+
 function LoadWithParams(param)
 {
     var execUrl = location.protocol + '//' + location.host + location.pathname + '?'+param+"=true&p=<?php echo $p;?>";
     window.location.assign(execUrl);
 }
+
+function arcInput()
+{
+    let tarcname = prompt("Please enter a name for the archive", "");
+
+    arcname =  tarcname.replace(/[^a-z0-9]/ig, '');
+
+    if(arcname != null && arcname != '')
+        arcname += "-";
+
+    arcname +=  new Date().toISOString().substr(0, 10);
+
+    LoadArchive(arcname);
+}
+
+
+function LoadArchive(param)
+{
+    var execUrl = location.protocol + '//' + location.host + location.pathname + '?arc=true&p=<?php echo $p;?>&arcname='+arcname;
+    window.location.assign(execUrl);
+}
+
 
 function ReloadPage()
 {
@@ -99,7 +123,7 @@ if ($_GET['default']) {
 }
 
 if ($_GET['arc']) {
-    echo shell_exec('sudo /home/shares/ubs/public/Shell/arc.sh');
+    echo shell_exec('sudo /home/shares/ubs/public/Shell/arc.sh '.$_GET['arcname']);
     echo "<script>setTimeout(ReloadPage, 2000);</script>";
 }
 
@@ -152,7 +176,7 @@ echo "</div>";
 </br>
 <button onclick="resetSwitcher()">Reset Switcher</button></br>
 </br>
-<button onclick="LoadWithParams('arc')">Archive JSONS</button></br>
+<button onclick="arcInput()">Archive JSONS</button></br>
 </br>
 <button onclick="showArc()">Show archived JSONS</button></br>
 </br>
