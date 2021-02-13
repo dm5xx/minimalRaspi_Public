@@ -1,3 +1,3 @@
 #!/bin/bash
-sudo zip -r ../JsonArc/json_$(date +"%Y-%m-%d").zip ../JSON
+sudo tar -cvpzf ../JsonArc/json_$(date +"%Y-%m-%d").tar.gz ../JSON
 echo "Update done";

@@ -50,6 +50,10 @@ function resetSwitcher()
     var execUrl = location.protocol + '//' + location.host + ":3000/ResetSwitcher";
     window.location.assign(execUrl);
 }
+
+function showArc() { 
+            window.open('showArc.php?p=<?php echo $p ?>', '_blank'); 
+} 
 </script>
 <body>
 <div>
@@ -148,9 +152,9 @@ echo "</div>";
 </br>
 <button onclick="resetSwitcher()">Reset Switcher</button></br>
 </br>
-<button onclick="LoadWithParams('default')">Restore JSONS</button></br>
-</br>
 <button onclick="LoadWithParams('arc')">Archive JSONS</button></br>
+</br>
+<button onclick="showArc()">Show archived JSONS</button></br>
 </br>
 <button onclick="LoadWithParams('chmod')">Changemod JSON</button></br>
 </br>
