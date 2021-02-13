@@ -14,9 +14,9 @@ if($p != $token["Token"])
 </head> 
 <style>
 button {
-    width: 400px;
-    height: 80px;
-    font-size: 40px;
+    width: 350px;
+    height: 60px;
+    font-size: 30px;
 }
 body{
     background-color: black;
@@ -58,9 +58,12 @@ echo "<div id=\"info\">";
 $result = shell_exec('sudo /home/shares/ubs/public/Shell/show.sh');
 $array = explode("\n", $result);
 
-$number_array = count($array);
+$number_array = count($array)-2;
 
-echo "Count of Entries: $number_array";
+$versionumber = file_get_contents("../../version.txt");
+echo "Running Version: $versionumber </br>";
+
+echo "Instances: $number_array";
 foreach($array as $key => $value)
 {
     echo "<div>$value</div>";
@@ -69,7 +72,7 @@ echo "</div>";
 
 echo "<div style=\"color:white\">";
 if ($_GET['start']) {
-    if($number_array < 3)
+    if($number_array < 1)
     {
         echo shell_exec('sudo /home/shares/ubs/public/Shell/start.sh');
         echo "<script>setTimeout(ReloadPage, 2000);</script>";
@@ -77,7 +80,7 @@ if ($_GET['start']) {
 }
 
 if ($_GET['stop']) {
-    if($number_array > 2)
+    if($number_array > 0)
     {
         echo shell_exec('sudo /home/shares/ubs/public/Shell/stop.sh');
         echo "<script>setTimeout(ReloadPage, 2000);</script>";
@@ -115,6 +118,12 @@ if ($_GET['status']) {
     echo "<script>setTimeout(ReloadPage, 10000);</script>";
 }
 
+if ($_GET['updateDocker']) {
+    echo "<script>alert('Please check Serverstatus. This may take some time since all is updated... (bigbig download)'); setTimeout(ReloadPage, 2000);</script>";
+    shell_exec('/usr/bin/nohup sudo /home/shares/ubs/public/Shell/updatedocker.sh  >/dev/null 2>&1 &');
+}
+
+
 if ($_GET['reboot']) {
     echo shell_exec('sudo /home/shares/ubs/public/Shell/reboot.sh');
     echo "<script>setTimeout(ReloadPage, 2000);</script>";
@@ -129,34 +138,27 @@ echo "</div>";
 <div>
 </br>
 <?php
-    if($number_array < 3)
+    if($number_array < 1)
         echo "<button onclick=\"LoadWithParams('start')\">Start Server! </button></br>";
-    if($number_array > 2)
+    if($number_array > 0)
         echo "<button onclick=\"LoadWithParams('stop')\">Stop Server! </button></br>";
 ?>
 </br>
-</br>
 <button onclick="resetSwitcher()">Reset Switcher</button></br>
-</br>
 </br>
 <button onclick="LoadWithParams('default')">Restore JSONS</button></br>
 </br>
-</br>
-</br>
 <button onclick="LoadWithParams('arc')">Archive JSONS</button></br>
-</br>
 </br>
 <button onclick="LoadWithParams('chmod')">Changemod JSON</button></br>
 </br>
-</br>
 <button onclick="LoadWithParams('unix')">ConvertShell2Unix</button></br>
 </br>
+<button onclick="LoadWithParams('status')">Dockerstatus </button></br>
 </br>
-<button onclick="LoadWithParams('status')">Show Serverstatus </button></br>
-</br>
+<button onclick="LoadWithParams('updateDocker')">Update Docker </button></br>
 </br>
 <button onclick="LoadWithParams('reboot')">Reboot Raspi! </button></br>
-</br>
 </br>
 <button onclick="LoadWithParams('shutdown')">Shutdown Raspi! </button></br>
 </div>
