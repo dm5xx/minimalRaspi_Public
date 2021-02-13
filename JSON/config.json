@@ -1,9 +1,9 @@
 {
-    "NumberOfBanks": 8,
+    "NumberOfBanks": 6,
     "EnableTimerProfile": 0,
     "ActiveTimerProfile": "TimerProfile1",
     "DeviceMapping": "DeviceMapping",
-    "LogLevel": 0,
+    "LogLevel": 1,
     "EnableWebSockets": 0,
     "MessageServiceEnable": 1,
     "MessageLifetime" : 60000,

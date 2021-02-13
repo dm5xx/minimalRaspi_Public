@@ -105,9 +105,14 @@ if ($_GET['unix']) {
 }
 
 
-if ($_GET['kill']) {
-    echo shell_exec('sudo /home/shares/ubs/public/Shell/kill.sh');
-    echo "<script>setTimeout(ReloadPage, 2000);</script>";
+if ($_GET['status']) {
+    $r = shell_exec('sudo /home/shares/ubs/public/Shell/status.sh');
+    $a = explode("\n", $r);
+    foreach($a as $key => $value)
+    {
+        echo "<div>$value</div>";
+    }
+    echo "<script>setTimeout(ReloadPage, 10000);</script>";
 }
 
 if ($_GET['reboot']) {
@@ -147,7 +152,7 @@ echo "</div>";
 <button onclick="LoadWithParams('unix')">ConvertShell2Unix</button></br>
 </br>
 </br>
-<button onclick="LoadWithParams('kill')">Kill Server! </button></br>
+<button onclick="LoadWithParams('status')">Show Serverstatus </button></br>
 </br>
 </br>
 <button onclick="LoadWithParams('reboot')">Reboot Raspi! </button></br>
