@@ -1,3 +1,3 @@
 #!/bin/bash
-su -c "zip -rj /home/shares/ubs/public/Shell/default /home/shares/ubs/public/JSON/" pi
+sudo zip -r ../JsonArc/json_$(date +"%Y-%m-%d").zip ../JSON
 echo "Update done";

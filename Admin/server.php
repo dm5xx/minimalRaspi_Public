@@ -62,6 +62,8 @@ $number_array = count($array)-2;
 
 $versionumber = file_get_contents("../../version.txt");
 echo "Running Version: $versionumber </br>";
+$publicversionumber = file_get_contents("publicversion.txt");
+echo "Public Version: $publicversionumber </br>";
 
 echo "Instances: $number_array";
 foreach($array as $key => $value)
@@ -156,7 +158,7 @@ echo "</div>";
 </br>
 <button onclick="LoadWithParams('status')">Dockerstatus </button></br>
 </br>
-<button onclick="LoadWithParams('updateDocker')">Update Docker </button></br>
+<button onclick="LoadWithParams('updateDocker')">Update Server </button></br>
 </br>
 <button onclick="LoadWithParams('reboot')">Reboot Raspi! </button></br>
 </br>

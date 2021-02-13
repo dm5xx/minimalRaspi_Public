@@ -1,5 +1,5 @@
 <?php
-
+phpinfo();
 
 $string = file_get_contents("../JSON/Token.json");
 $token = json_decode($string, true);
