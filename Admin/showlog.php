@@ -1,6 +1,4 @@
 <?php
-phpinfo();
-
 $string = file_get_contents("../JSON/Token.json");
 $token = json_decode($string, true);
 
@@ -9,7 +7,7 @@ if($p != $token["Token"])
     return;
 
 
-foreach (glob("../../roll-*") as $filename) {
+foreach (glob("../Log/roll-*") as $filename) {
     echo "<a href=\"show.php?p=".$p."&file=$filename\" target=blank>$filename</a><br/>". "\n";
 }
 ?>
