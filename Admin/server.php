@@ -11,25 +11,85 @@ if($p != $token["Token"])
 <html>
 <head>
   <!--meta http-equiv="refresh" content="10"-->
-</head> 
+</head>
 <style>
-button {
-    width: 350px;
-    height: 60px;
-    font-size: 30px;
-}
 body{
     background-color: black;
 }
 
 #info {
-    background-color: cornflowerblue;
+    background-color: #333333;
     color:#ffffff;
     font-family:Arial;
-    font-weight: bold;
 	font-size:16px;
     text-decoration:none;
+    border: 1px solid cornflowerblue;
+    padding: 2px
 }
+
+.glow-on-hover {
+    width: 300px;
+    height: 60px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #555;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.glow-on-hover:active {
+    color: #333
+}
+
+.glow-on-hover:active:after {
+    background: transparent;
+}
+
+.glow-on-hover:hover:before {
+    opacity: 1;
+}
+
+.glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #222;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
 
 </style>
 <script>
@@ -141,7 +201,7 @@ if ($_GET['status']) {
     $a = explode("\n", $r);
     foreach($a as $key => $value)
     {
-        echo "<div>$value</div>";
+        echo "$value</br>";
     }
     echo "<script>setTimeout(ReloadPage, 10000);</script>";
 }
@@ -165,37 +225,25 @@ if ($_GET['shutdown']) {
     echo shell_exec('sudo /home/shares/ubs/public/Shell/shutdown.sh');
     echo "<script>setTimeout(ReloadPage, 2000);</script>";
 }
-echo "</div>";
 ?>
 </div>
 <div>
-</br>
 <?php
     if($number_array < 1)
-        echo "<button onclick=\"LoadWithParams('start')\">Start Server! </button></br>";
+        echo "<button class=\"glow-on-hover\" onclick=\"LoadWithParams('start')\">Start Server!</button>";
     if($number_array > 0)
-        echo "<button onclick=\"LoadWithParams('stop')\">Stop Server! </button></br>";
+        echo "<button  class=\"glow-on-hover\" onclick=\"LoadWithParams('stop')\">Stop Server!</button>";
 ?>
-</br>
-<button onclick="resetSwitcher()">Reset Switcher</button></br>
-</br>
-<button onclick="arcInput()">Archive JSONS</button></br>
-</br>
-<button onclick="showArc()">Show archived JSONS</button></br>
-</br>
-<button onclick="LoadWithParams('chmod')">Changemod JSON</button></br>
-</br>
-<button onclick="LoadWithParams('unix')">ConvertShell2Unix</button></br>
-</br>
-<button onclick="LoadWithParams('status')">Dockerstatus </button></br>
-</br>
-<button onclick="LoadWithParams('updatePublicFiles')">Update PublicFiles </button></br>
-</br>
-<button onclick="LoadWithParams('updateDocker')">Update Server </button></br>
-</br>
-<button onclick="LoadWithParams('reboot')">Reboot Raspi! </button></br>
-</br>
-<button onclick="LoadWithParams('shutdown')">Shutdown Raspi! </button></br>
+<button class="glow-on-hover" onclick="resetSwitcher()">Reset Switcher</button>
+<button class="glow-on-hover" onclick="arcInput()">Archive JSONS</button>
+<button class="glow-on-hover" onclick="showArc()">Show archived JSONS</button>
+<button class="glow-on-hover" onclick="LoadWithParams('chmod')">Changemod JSON</button>
+<button class="glow-on-hover" onclick="LoadWithParams('unix')">ConvertShell2Unix</button>
+<button class="glow-on-hover" onclick="LoadWithParams('status')">Dockerstatus </button>
+<button class="glow-on-hover" onclick="LoadWithParams('updatePublicFiles')">Update PublicFiles </button>
+<button class="glow-on-hover" onclick="LoadWithParams('updateDocker')">Update Server </button>
+<button class="glow-on-hover" onclick="LoadWithParams('reboot')">Reboot Raspi! </button>
+<button class="glow-on-hover" onclick="LoadWithParams('shutdown')">Shutdown Raspi! </button>
 </div>
 </body>
 </html>
