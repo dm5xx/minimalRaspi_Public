@@ -39,7 +39,7 @@ if($p != $token["Token"])
 
 
 foreach (glob("../JsonArc/json_*") as $filename) {
-    echo "<a href=\"unzipper.php?p=".$p."&name=$filename\" target=blank>$filename</a>&nbsp;&nbsp;&nbsp;|</a>&nbsp;&nbsp;&nbsp;<a href=\"deleteArc.php?p=".$p."&name=$filename\" target=blank> Delete</a><br/>". "\n";
+    echo "<a href=\"$filename\" download>$filename</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"unzipper.php?p=".$p."&name=$filename\" target=blank> Reload</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"deleteArc.php?p=".$p."&name=$filename\" target=blank> Delete</a><br/>". "\n";
 }
 ?>
 </body>
