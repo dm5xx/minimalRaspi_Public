@@ -30,5 +30,6 @@ body{
 <a href="admin_lockDef.php?p=<?php echo $p;?>&file=LockDef_sc" target=_blank>Admin - Lock: Define all the pins over banks, who should be slotlocked</a><br/>
 <a href="admin_groupDef.php?p=<?php echo $p;?>&file=GroupDef_sc" target=_blank>Admin - Groups: Define the grouped together pins of a Bank</a><br/>
 <a href="showlog.php?p=<?php echo $p;?>" target=_blank>Show Logs</a><br/>
+<a href="admin_message.php?p=<?php echo $p;?>" target=_blank>Send message</a><br/>
 </body>
 </html>

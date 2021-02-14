@@ -51,10 +51,9 @@ function arcInput()
         arcname += "-";
 
     arcname +=  new Date().toISOString().substr(0, 10);
-
+    
     LoadArchive(arcname);
 }
-
 
 function LoadArchive(param)
 {
@@ -82,14 +81,13 @@ function showArc() {
 <body>
 <div>
 <?php
+
 echo "<div id=\"info\">";
 $result = shell_exec('sudo /home/shares/ubs/public/Shell/show.sh');
 $array = explode("\n", $result);
 
 $number_array = count($array)-2;
 
-$versionumber = file_get_contents("../../version.txt");
-echo "Running Version: $versionumber </br>";
 $publicversionumber = file_get_contents("publicversion.txt");
 echo "Publicfiles: $publicversionumber </br>";
 
@@ -153,6 +151,11 @@ if ($_GET['updateDocker']) {
     shell_exec('/usr/bin/nohup sudo /home/shares/ubs/public/Shell/updatedocker.sh  >/dev/null 2>&1 &');
 }
 
+if ($_GET['updatePublicFiles']) {
+    echo "<script>alert('Please check your config files.'); setTimeout(ReloadPage, 2000);</script>";
+    shell_exec('/usr/bin/nohup sudo /home/shares/ubs/public/Shell/updatepublicfiles.sh  >/dev/null 2>&1 &');
+}
+
 
 if ($_GET['reboot']) {
     echo shell_exec('sudo /home/shares/ubs/public/Shell/reboot.sh');
@@ -185,6 +188,8 @@ echo "</div>";
 <button onclick="LoadWithParams('unix')">ConvertShell2Unix</button></br>
 </br>
 <button onclick="LoadWithParams('status')">Dockerstatus </button></br>
+</br>
+<button onclick="LoadWithParams('updatePublicFiles')">Update PublicFiles </button></br>
 </br>
 <button onclick="LoadWithParams('updateDocker')">Update Server </button></br>
 </br>
