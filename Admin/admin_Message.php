@@ -19,7 +19,6 @@ function submitData()
     let data = {};
     data.Message = document.getElementById('messageField').value;
     let b = JSON.stringify(data);
-    alert(b);
     fetch(url, { method: "POST", body: b, headers: {
             "Content-Type": "application/json"
           }});
