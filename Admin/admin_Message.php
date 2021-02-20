@@ -11,15 +11,29 @@ if($p != $token["Token"])
 
 <html>
 <script type="text/javascript">
+
+function submitData()
+{
+    let url = "http://"+location.host+":3000/Message"; 
+    let data = {};
+    data.Message = document.getElementById('messageField').value;
+    let b = JSON.stringify(data);
+    alert(b);
+    fetch(url, { method: "POST", body: b, headers: {
+            "Content-Type": "application/json"
+          }});
+}
+
+
 </script>
 <link rel="stylesheet" href="admin.css">
 <body id="body">
 
-<form action="http://<?php echo $_SERVER['SERVER_ADDR'];?>:3000/Message" id="usrform"  method="post">
-    <textarea name="Message" rows="4" cols="120"></textarea>
+<div name="messageDiv">
+    <textarea id="messageField" rows="4" cols="120"></textarea>
     </br>
-    <input type="submit">
-</form>
+    <button onclick="submitData()">Send</button>
+</div>
 
 </script>
 </body>
