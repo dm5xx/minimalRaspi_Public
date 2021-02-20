@@ -162,7 +162,13 @@ echo "<div style=\"color:white\">";
 if ($_GET['start']) {
     if($number_array < 1)
     {
-        echo shell_exec('sudo /home/shares/ubs/public/Shell/start.sh');
+        $r = echo shell_exec('sudo /home/shares/ubs/public/Shell/start.sh');
+        $a = explode("\n", $r);
+        foreach($a as $key => $value)
+        {
+            echo "$value</br>";
+        }
+        
         echo "<script>setTimeout(ReloadPage, 2000);</script>";
     }
 }
