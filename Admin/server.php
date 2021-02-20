@@ -222,6 +222,7 @@ if ($_GET['updateDocker']) {
 
 if ($_GET['updatePublicFiles']) {
     echo "<script>alert('Please check your config files.'); setTimeout(ReloadPage, 2000);</script>";
+    shell_exec('sudo /home/shares/ubs/public/Shell/arc.sh pfupdate_'.(date("Y_m_d")));
     shell_exec('/usr/bin/nohup sudo /home/shares/ubs/public/Shell/updatepublicfiles.sh  >/dev/null 2>&1 &');
 }
 
