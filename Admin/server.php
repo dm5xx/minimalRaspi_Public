@@ -250,7 +250,7 @@ if ($_GET['shutdown']) {
 <button class="glow-on-hover" onclick="LoadWithParams('chmod')">Changemod JSON</button>
 <button class="glow-on-hover" onclick="LoadWithParams('unix')">ConvertShell2Unix</button>
 <button class="glow-on-hover" onclick="LoadWithParams('status')">Dockerstatus </button>
-<button class="glow-on-hover" onclick="LoadWithParams('updatePublicFiles')">Update PublicFiles </button>
+<button class="glow-on-hover" onclick="LoadWithParams('updatePublicFiles')">Rest to newest PublicFiles </button>
 <button class="glow-on-hover" onclick="LoadWithParams('updateDocker')">Update Server </button>
 <button class="glow-on-hover" onclick="LoadWithParams('reboot')">Reboot Raspi! </button>
 <button class="glow-on-hover" onclick="LoadWithParams('shutdown')">Shutdown Raspi! </button>
