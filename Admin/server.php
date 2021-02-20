@@ -169,7 +169,7 @@ if ($_GET['start']) {
             echo "$value</br>";
         }
         
-        echo "<script>setTimeout(ReloadPage, 2000);</script>";
+        echo "<script>setTimeout(ReloadPage, 10000);</script>";
     }
 }
 
