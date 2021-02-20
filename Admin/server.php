@@ -186,7 +186,10 @@ if ($_GET['arc']) {
 }
 
 if ($_GET['chmod']) {
-    echo shell_exec('sudo /home/shares/ubs/public/Shell/chmodjson.sh');
+    exec("sudo chmod 777 -R /home/shares/ubs/public/JSON");
+    exec("sudo chmod 777 -R /home/shares/ubs/public/Log");
+    exec("sudo chmod 777 -R /home/shares/ubs/public/Shell");
+    exec("Changemod executed!");
     echo "<script>setTimeout(ReloadPage, 2000);</script>";
 }
 
