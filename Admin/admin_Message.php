@@ -14,7 +14,8 @@ if($p != $token["Token"])
 
 function submitData()
 {
-    let url = "http://"+location.host+":3000/Message"; 
+    let host = location.host.split(":")[0];
+    let url = "http://"+host+":3000/Message"; 
     let data = {};
     data.Message = document.getElementById('messageField').value;
     let b = JSON.stringify(data);
