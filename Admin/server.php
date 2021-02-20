@@ -162,7 +162,7 @@ echo "<div style=\"color:white\">";
 if ($_GET['start']) {
     if($number_array < 1)
     {
-        $r = echo shell_exec('sudo /home/shares/ubs/public/Shell/start.sh');
+        $r = shell_exec('sudo /home/shares/ubs/public/Shell/start.sh');
         $a = explode("\n", $r);
         foreach($a as $key => $value)
         {
