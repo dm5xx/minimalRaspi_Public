@@ -47,6 +47,7 @@ function getYourRemoteIP()
     console.log("Declared useThisDynDNS is: " + useThisDynDNS);
     console.log("Remote is now " + remoteCon);
     url = remoteCon;
+    window.setInterval(GetMessages, MessageRequestInterval);
     console.log("initsteps called...");
     initSteps();
 }

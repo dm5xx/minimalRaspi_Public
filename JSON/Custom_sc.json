@@ -1,9 +1,10 @@
 {
-    "useRemoteURL": 0,
+    "useRemoteURL": 1,
     "useThisDynDNS": "ph57pz6bsa2qs41o.myfritz.net",
     "useRemotePort": 3000,
     "hideMenu": 0,
     "wrapBanks": 0,
     "hideLockAlert": 0,
-    "disableNumbPadShortcuts": 0
+    "disableNumbPadShortcuts": 0,
+    "MessageRequestInterval": 30000
 }

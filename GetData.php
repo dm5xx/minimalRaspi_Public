@@ -8,9 +8,6 @@ if($p != $token["Token"])
     return;
 
 ?>
-
-window.setInterval(GetMessages, 20000);
-
 var myHeaders = new Headers();
 myHeaders.append('Content-Type', 'application/json');
 myHeaders.append("Authorization", "<?php echo "Basic ". base64_encode("admin:".$p);?>");
