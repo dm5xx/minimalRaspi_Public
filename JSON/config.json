@@ -6,7 +6,7 @@
     "LogLevel": 1,
     "EnableWebSockets": 0,
     "MessageServiceEnable": 1,
-    "MessageLifetime" : 60000,
+    "MessageLifetime" : 30000,
     "PingServiceEnabled": 1,
     "PingInterval" : 5000,
     "WatchDogPersistTime": 5000,
