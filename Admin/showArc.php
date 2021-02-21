@@ -37,9 +37,14 @@ $p = $_GET["p"];
 if($p != $token["Token"])
     return;
 
+if ($handle = opendir('../JsonArc/')) {
 
-foreach (glob("../JsonArc/json_*") as $filename) {
-    echo "<a href=\"$filename\" download>$filename</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"unzipper.php?p=".$p."&name=$filename\" target=blank> Reload</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"deleteArc.php?p=".$p."&name=$filename\" target=blank> Delete</a><br/>". "\n";
+    while (false !== ($filename = readdir($handle))) {
+        if ($filename != "." && $filename != "..") {
+            echo "<a href=\"../JsonArc/".$filename."\" download>$filename</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"unzipper_json.php?p=".$p."&name=$filename\" target=blank>Load</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"deleteArc.php?p=".$p."&name=$filename\" target=blank> Delete</a><br/>". "\n";
+        }
+    }
+    closedir($handle);
 }
 ?>
 </body>

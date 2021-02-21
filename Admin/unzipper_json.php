@@ -22,7 +22,7 @@ body{
 }
 
 div {
-    font-size:25px;
+    font-size:18px;
     color: white;
 }
 
@@ -33,8 +33,13 @@ div {
 $string = file_get_contents("../JSON/Token.json");
 $token = json_decode($string, true);
 
-exec("sudo tar -xzf ".$_GET['name']." -C ../");
-
-echo "<div>Done. Window can be closed now!</div>";
+$r = shell_exec("sudo unzip -o /home/shares/ubs/public/JsonArc/".$_GET['name']." -d /home/shares/ubs/public/JSON");
+$a = explode("\n", $r);
+foreach($a as $key => $value)
+{
+    echo "<div>$value</div>";
+}
+exec("sudo chmod 777 -R /home/shares/ubs/public/JSON");    
+echo "</br></br><div>....Done. Window can be closed now!</div>";
 ?>
 </body>

@@ -136,7 +136,12 @@ function resetSwitcher()
 
 function showArc() { 
             window.open('showArc.php?p=<?php echo $p ?>', '_blank'); 
+}
+
+function arcUpload() { 
+            window.open('up.php?p=<?php echo $p ?>', '_blank'); 
 } 
+
 </script>
 <body>
 <div>
@@ -181,13 +186,19 @@ if ($_GET['stop']) {
     }
 }
 
-if ($_GET['default']) {
-    echo shell_exec('sudo /home/shares/ubs/public/Shell/default.sh');
-    echo "<script>setTimeout(ReloadPage, 2000);</script>";
-}
+// if ($_GET['default']) {
+//     echo shell_exec('sudo /home/shares/ubs/public/Shell/default.sh');
+//     echo "<script>setTimeout(ReloadPage, 2000);</script>";
+// }
 
 if ($_GET['arc']) {
-    echo shell_exec('sudo /home/shares/ubs/public/Shell/arc.sh '.$_GET['arcname']);
+    require_once "pclzip/zip.php";
+    $zip = new Zip();
+    $zip->zip_start("/home/shares/ubs/public/JsonArc/".$_GET['arcname'].".zip");
+    $zip->zip_add(array("/home/shares/ubs/public/JSON/")); // adding one file and one directory
+    $zip->zip_end();
+    exec("sudo chmod 777 -R /home/shares/ubs/public/JsonArc");      
+    //echo shell_exec('sudo /home/shares/ubs/public/Shell/arc.sh '.$_GET['arcname']);
     echo "<script>setTimeout(ReloadPage, 2000);</script>";
 }
 
@@ -247,10 +258,11 @@ if ($_GET['shutdown']) {
 <button class="glow-on-hover" onclick="resetSwitcher()">Reset Switcher</button>
 <button class="glow-on-hover" onclick="arcInput()">Archive JSONS</button>
 <button class="glow-on-hover" onclick="showArc()">Show archived JSONS</button>
+<button class="glow-on-hover" onclick="arcUpload()">Upload JSONS</button>
 <button class="glow-on-hover" onclick="LoadWithParams('chmod')">Changemod JSON</button>
 <button class="glow-on-hover" onclick="LoadWithParams('unix')">ConvertShell2Unix</button>
 <button class="glow-on-hover" onclick="LoadWithParams('status')">Dockerstatus </button>
-<button class="glow-on-hover" onclick="LoadWithParams('updatePublicFiles')">Rest to newest PublicFiles </button>
+<button class="glow-on-hover" onclick="LoadWithParams('updatePublicFiles')">Restore PublicFiles</button>
 <button class="glow-on-hover" onclick="LoadWithParams('updateDocker')">Update Server </button>
 <button class="glow-on-hover" onclick="LoadWithParams('reboot')">Reboot Raspi! </button>
 <button class="glow-on-hover" onclick="LoadWithParams('shutdown')">Shutdown Raspi! </button>
