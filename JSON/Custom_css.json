@@ -1,0 +1,62 @@
+[
+{
+    "Name" : ".xxButton",
+    "color" : "#ffffff",
+    "font-size": "auto",
+    "background-color": "cornflowerblue"
+},
+{
+    "Name" : ".xxButton:hover",
+    "background-color": "red"
+},
+{
+    "Name" : ".xxButtonGreen",
+    "background-color": "lime"
+},
+{
+    "Name" : ".xxButtonRed",
+    "background-color": "red"
+},
+{
+    "Name" : ".xxButtonMulti",
+    "background-color": "orange"
+},
+{
+    "Name" : ".xxButtonMultiHit",
+    "background-color": "red"
+},
+{
+    "Name" : ".xxButtonHit",
+    "background-color": "crimson"
+},
+{
+    "Name" : ".xxButtonDisabled",
+    "background-color": "#222222"
+},
+{
+    "Name" : ".xxFooterReset",
+    "background-color": "#222222"
+},
+{
+    "Name" : ".title",
+    "font-size": "2vw",
+    "color": "gray",
+    "background-color": "#333333"
+},
+{
+    "Name" : ".xxFooterReset",
+    "background-color": "orange"
+},
+{
+    "Name" : ".xxLogSwitchLocked",
+    "background-color" : "orange"
+},
+{
+    "Name" : ".xxFooter",
+    "background-color": "crimson"
+},
+{
+    "Name" : ".xxMenu",
+    "background-color": "#003333"
+}
+]

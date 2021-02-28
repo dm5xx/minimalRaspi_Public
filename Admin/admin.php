@@ -21,6 +21,7 @@ body{
 <body>
 <a href="server.php?p=<?php echo $p;?>" target=_blank>Admin - Server: Start,Stop,Kill,Restore JSON, Archive JSON, Shutdown Server...</a><br/>
 <a href="admin_Basic.php?p=<?php echo $p;?>&file=config" target=_blank>Admin - Config: Configure the Server_Configuration parts (GPIO, Big32, Watchdogs, logging)...</a><br/>
+<a href="admin_Css.php?p=<?php echo $p;?>&file=Custom_css" target=_blank>Admin - CSS: Edit the custom css...</a><br/>
 <a href="admin_Basic.php?p=<?php echo $p;?>&file=Token" target=_blank>Admin - Token: Edit the Securitytoken...</a><br/>
 <a href="admin_SwitchbuilderDef.php?p=<?php echo $p;?>&file=SwitchBuilderDef" target=_blank>Admin - Create Switches: Configure the different Switches you want to use...</a><br/>
 <a href="admin_Basic.php?p=<?php echo $p;?>&file=Custom_sc" target=_blank>Admin - WebConfig: Configure the RemoteSwitching_Configuration parts...</a><br/>

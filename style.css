@@ -1,0 +1,68 @@
+.xxButton {
+	display:inline-block;
+	font-family:Arial;
+    font-weight: bold;
+    text-decoration:none;
+    height:3em;
+    text-align: center;
+    padding-top: 0.6em;
+}
+
+.xxFooterReset {
+    grid-column-start: 7;
+    grid-column-end: span 2;    
+}
+
+.xxLockSwitch {
+    grid-column-start: 6;
+}
+
+@font-face { 
+font-family: "fff-forward"; 
+src: url("FFFFORWA.TTF"); 
+}
+
+.title {
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration:none;
+    font-weight: bold;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: span 8;    
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    gap: 5px 5px;
+    grid-template-areas:
+    ". . . . . . . ."
+    ". . . . . . . .";
+    height: 3em;
+}
+
+.x1 { grid-area: x1; }
+
+body {
+    background-color: black;
+}
+
+div.BlockUserInteractionWithPage {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    z-index: 2000;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    background-color: white;
+    opacity: 1;
+    height: 20%;
+}
+
+.xxMenu
+{
+    width: auto;
+} 
