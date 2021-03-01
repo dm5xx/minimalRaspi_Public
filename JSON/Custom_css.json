@@ -3,7 +3,7 @@
         "Name": ".xxButton",
         "font-size": "auto",
         "color": "#ffffff",
-        "background-color": " #4540e0 "
+        "background-color": "DodgerBlue"
     },
     {
         "Name": ".xxButton:hover",
