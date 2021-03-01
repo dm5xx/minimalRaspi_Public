@@ -58,7 +58,12 @@ for($x = 0; $x < $size; $x++)
     for($b = 0; $b < $subsize; $b++)
     {
         $idToChange = $x."_".$b;
-        echo "\t<div id=\"".$nodeKeyInfo[$x][$b]."\">".$nodeKeyInfo[$x][$b]." = <a id=\"".$idToChange."\" href=\"#\" onclick=\"update('".$idToChange."','".$nodeKeyInfo[$x][$b]."')\">". $json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]] . "</a></div>\n";
+        echo "\t<div id=\"".$nodeKeyInfo[$x][$b]."\">".$nodeKeyInfo[$x][$b]." = <a id=\"".$idToChange."\" href=\"#\" onclick=\"update('".$idToChange."','".$nodeKeyInfo[$x][$b]."')\">". $json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]] . "</a>";
+
+        if(strpos($nodeKeyInfo[$x][$b], 'color') !== false)
+            echo "\t<span onclick=\"window.open('https://htmlcolorcodes.com/')\" style=\"cursor: pointer; background-color:".$json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]]."\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
+
+        echo "</div>\n";
     }
     echo "</div><br/><br/>\n";
 }
@@ -126,13 +131,17 @@ function updateConfigNode(id, value)
 
 function fireSubmit()
 {
-    const url ="submitSwitchBuilderDef.php";
-    config.File = "../JSON/SwitchBuilderDef";
-    config.p = <?php echo "\"".$p."\"" ?>;
+    const url ="submitCss.php";
 
+    let info = {
+        "FileName" : "../JSON/Custom_css",
+        "p" : <?php echo "\"".$p."\"" ?>
+    }
+
+    config.push(info);
     let mystr = JSON.stringify(config);
 
-    fetch('submitSwitchBuilderDef.php', {
+    fetch(url, {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
