@@ -128,14 +128,21 @@ for($x = 0; $x < $size; $x++)
     for($b = 0; $b < $subsize; $b++)
     {
         $idToChange = $x."_".$b;
-        echo "\t<div id=\"".$nodeKeyInfo[$x][$b]."\">".$nodeKeyInfo[$x][$b]." = <a id=\"".$idToChange."\" href=\"#\" onclick=\"update('".$idToChange."','".$nodeKeyInfo[$x][$b]."')\">". $json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]] . "</a>";
+        
 
+        echo "\t<div id=\"".$nodeKeyInfo[$x][$b]."\">".$nodeKeyInfo[$x][$b]." = ";
+
+        if($nodeKeyInfo[$x][$b] !== "Name")
+            echo "<a id=\"".$idToChange."\" href=\"#\" onclick=\"update('".$idToChange."','".$nodeKeyInfo[$x][$b]."')\">". $json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]] . "</a>";
+        else
+            echo $json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]];
+        
         if(strpos($nodeKeyInfo[$x][$b], 'color') !== false)
             echo "\t<span onclick=\"window.open('https://htmlcolorcodes.com/')\" style=\"cursor: pointer; background-color:".$json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]]."\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>";
 
         echo "</div>\n";
     }
-    echo "</div><br/><br/>\n";
+    echo "</div><br/>\n";
 }
 ?>
 </div>
@@ -143,7 +150,7 @@ for($x = 0; $x < $size; $x++)
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <label for="modal_value" id="modal_label"></label>
+    <label style="font-size:16px; color:black" for="modal_value" id="modal_label"></label>
     <input type="text" id="modal_input" name="modal_input" value="" style="width: 200px"><button id="modal_save">save</button><br><br>
   </div>
 </div>

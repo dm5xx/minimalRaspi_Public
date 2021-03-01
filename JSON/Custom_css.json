@@ -1,9 +1,9 @@
 [
     {
         "Name": ".xxButton",
-        "color": "#ffffff",
         "font-size": "auto",
-        "background-color": "#DFFF00"
+        "color": "#ffffff",
+        "background-color": " #4540e0 "
     },
     {
         "Name": ".xxButton:hover",
