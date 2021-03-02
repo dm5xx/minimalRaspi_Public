@@ -3,6 +3,9 @@
 $string = file_get_contents("JSON/Token.json");
 $token = json_decode($string, true);
 
+$webConfigFile = file_get_contents("JSON/Custom_sc.json");
+$webConfig = json_decode($webConfigFile, true);
+
 $p = $_GET["p"];
 if($p != $token["Token"])
     return;
@@ -27,7 +30,32 @@ if($p != $token["Token"])
 <script language="javascript" type="text/javascript" src="SetData.js"></script>
 <script language="javascript" type="text/javascript" src="http://h.mmmedia-online.de/minimal63/Helper.js"></script>
 <script>
-     var url = "<?php echo $_SERVER['SERVER_ADDR'];?>:3000";
+     var url = "<?php
+
+    function startsWith ($string, $startString) 
+    { 
+        $len = strlen($startString); 
+        return (substr($string, 0, $len) === $startString); 
+    } 
+    
+    if(startsWith($_SERVER['REMOTE_ADDR'], "192.168.") || 
+        str_starts_with($_SERVER['REMOTE_ADDR'], "10.") || 
+        str_starts_with($_SERVER['REMOTE_ADDR'], "172.16."))
+    {
+        echo $_SERVER['SERVER_ADDR'].":3000";
+    }
+    else
+    {
+        if($webConfig['useRemoteURL'] == 1)
+        {
+            echo $webConfig['useThisDynDNS'].":".$webConfig['useRemotePort'];
+        }
+        else
+        {
+            echo "255.255.255.0";
+        }
+    }
+     ?>";
 </script>
 <html>
 <body>
