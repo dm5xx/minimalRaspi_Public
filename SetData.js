@@ -125,6 +125,10 @@ function lockSwitchHandler(lockStatus)
     var elementName = "lock";
     var element = document.getElementById(elementName); 
 
+    
+	if(element === null)
+        return;
+
     if(lockSwitchStatus)
     {
         element.className = "xxButton xxLockSwitch xxButtonRed";
