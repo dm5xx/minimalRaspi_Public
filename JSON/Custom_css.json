@@ -2,6 +2,7 @@
     {
         "Name": ".xxButton",
         "font-size": "auto",
+        "padding": "0.1em",
         "color": "#ffffff",
         "background-color": "DodgerBlue"
     },

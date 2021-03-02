@@ -3,7 +3,7 @@
         "Type": "LAN",
         "NumberOfBanks": 4,
         "IsInverted": 0,
-        "Ip_Port": "192.168.0.75:59",
+        "Ip_Port": "192.168.97.209:59",
         "IsActive": 1,
         "IsOnError": 0
     },

@@ -128,11 +128,12 @@ function lockSwitchHandler(lockStatus)
     if(lockSwitchStatus)
     {
         element.className = "xxButton xxLockSwitch xxButtonRed";
-        element.innerHTML = "SWITCH is LOCKED <br/>UNLOCK";
+		element.innerHTML = "<div class='divTableCell'>" + "SWITCH is LOCKED <br/>UNLOCK" + "</div>"
+
     }
     else
     {
         element.className = "xxButton xxLockSwitch xxButtonGreen";
-        element.innerHTML = "SWITCH not LOCKED<br/>LOCK";
+		element.innerHTML = "<div class='divTableCell'>" + "SWITCH not LOCKED<br/>LOCK" + "</div>"
     }
 }
