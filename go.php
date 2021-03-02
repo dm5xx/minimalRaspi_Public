@@ -30,41 +30,49 @@ if($p != $token["Token"])
 <script language="javascript" type="text/javascript" src="SetData.js"></script>
 <script language="javascript" type="text/javascript" src="http://h.mmmedia-online.de/minimal63/Helper.js"></script>
 <script>
-     var url = "<?php
+// <?php 
+echo "/*";
+echo "HUHU ";
+echo $webConfig['useThisDynDNS'].":".$webConfig['useRemotePort'];
+echo "\n";
+echo $_SERVER['REMOTE_ADDR'];
+echo "\n";
+echo $webConfig['useRemoteURL'];
+echo "\n";
+echo "*/"
+?>
+var url = "<?php
 
-    function startsWith ($string, $startString) 
-    { 
-        $len = strlen($startString); 
-        return (substr($string, 0, $len) === $startString); 
-    } 
-    
-    if(startsWith($_SERVER['REMOTE_ADDR'], "192.168.") || 
-        str_starts_with($_SERVER['REMOTE_ADDR'], "10.") || 
-        str_starts_with($_SERVER['REMOTE_ADDR'], "172.16."))
-    {
-        echo $_SERVER['SERVER_ADDR'].":3000";
-    }
-    else
-    {
-        if($webConfig['useRemoteURL'] == 1)
-        {
-            echo $webConfig['useThisDynDNS'].":".$webConfig['useRemotePort'];
-        }
-        else
-        {
-            echo "255.255.255.0";
-        }
-    }
-     ?>";
+function startsWith($haystack, $needle) 
+{ 
+    return strpos($haystack,$needle) === 0; 
+} 
+
+if(startsWith($_SERVER['REMOTE_ADDR'], "192.168.") || startsWith($_SERVER['REMOTE_ADDR'], "10.") || startsWith($_SERVER['REMOTE_ADDR'], "172.16."))
+{
+    echo $_SERVER['SERVER_ADDR'].":3000";
+}
+else
+{
+   if($webConfig['useRemoteURL'] == "1")
+   {
+        echo $webConfig['useThisDynDNS'].":".$webConfig['useRemotePort'];
+   }
+   else
+   {
+       echo "255.255.255.0";
+   }
+}
+?>";
 </script>
 <html>
 <body>
     <div class="grid-container" id="container">
     </div>
-</body>
 <script>
     (() => {
         init();
     })()
 </script>
+</body>
 </html>
