@@ -43,6 +43,12 @@ echo "var nodeKeyInfo= " . json_encode($nodeKeyInfo, JSON_PRETTY_PRINT). ";\n";
 ?>
 </script>
 <link rel="stylesheet" href="admin.css">
+<style>
+div, a, a:visited {
+    font-size:25px;
+    color: white;
+}
+</style>
 <body id="body" style="color: white">
 
 <div id="container">
@@ -58,7 +64,13 @@ for($x = 0; $x < $size; $x++)
     for($b = 0; $b < $subsize; $b++)
     {
         $idToChange = $x."_".$b;
-        echo "\t<div id=\"".$nodeKeyInfo[$x][$b]."\">".$nodeKeyInfo[$x][$b]." = <a id=\"".$idToChange."\" href=\"#\" onclick=\"update('".$idToChange."','".$nodeKeyInfo[$x][$b]."')\">". $json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]] . "</a></div>\n";
+
+        $displayValue = $json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]];
+
+        if(is_Array($displayValue))
+            $displayValue = implode(',',$json_a[$validKeysAsStrings[$x]][$nodeKeyInfo[$x][$b]]);
+
+        echo "\t<div id=\"".$nodeKeyInfo[$x][$b]."\">".$nodeKeyInfo[$x][$b]." = <a id=\"".$idToChange."\" href=\"#\" onclick=\"update('".$idToChange."','".$nodeKeyInfo[$x][$b]."')\">". $displayValue . "</a></div>\n";
     }
 
     echo "</div><br/><br/>\n";
@@ -76,7 +88,7 @@ for($x = 0; $x < $size; $x++)
 
 <div>
 <button onclick="add('MCP')">add - MCP</button>
-<button onclick="add('BIG')">add - Big32</button>
+<button onclick="add('Big32')">add - Big32</button>
 <button onclick="add('LAN')">add - LAN</button>
 <button onclick="refresh()">undo</button>
 <button onclick="fireSubmit()">save</button>
@@ -130,13 +142,13 @@ function updateConfigNode(id, value)
 
 function fireSubmit()
 {
-    const url ="submitSwitchBuilderDef.php";
+    const url ="submitSwitchBuilderDef.php?p=mtx";
     config.File = "../JSON/SwitchBuilderDef";
     config.p = <?php echo "\"".$p."\"" ?>;
 
     let mystr = JSON.stringify(config);
 
-    fetch('submitSwitchBuilderDef.php', {
+    fetch(url, {
         method: 'POST', // or 'PUT'
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -163,14 +175,22 @@ function add(type)
         Name : "S"+nextDataSetNumber,
         Type : type,
         NumberOfBanks : 0,
-        FirstBankNr : getLastfromLastEntry+1,
-        LastBankNr : 0
+        IsInverted : 0,
+        IsActive : 0,
+        IsOnError : 0
     };
-
-    let keys = Object.keys(newMCP);
+    let labels = [ "Type", "NumberOfBanks", "IsInverted", "IsActive", "IsOnError"];
 
     if(type == "LAN")
+    {
+        labels.push("Ip_Port");
         newMCP.Ip_Port = "192.168.0.0";
+    }
+    else
+    {
+        labels.push("PinMap");
+        newMCP.PinMap = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+    }
     
     let x = nextDataSetNumber;
     let b = 0;
@@ -181,22 +201,17 @@ function add(type)
     titleDiv.setAttribute("id", newMCP.Name);
     titleDiv.innerHTML = newMCP.Name;
 
-    let labels = [ "Type", "NumberOfBanks", "FirstBankNr", "LastBankNr"];
+    let nbr = labels.length;
 
-    if(type == "LAN")
-    {
-        labels[4] = "Ip_Port";
-        keys.push("Ip_Port");
-    }
-
-
-    for(let a = 0; a < labels.length; a++)
+    for(let a = 0; a < nbr; a++)
     {
         let idToChange = x+"_"+b;
         let d = document.createElement("div"); 
         d.setAttribute("id", labels[a]);
 
-        d.innerHTML = labels[a]+" = <a id=\""+idToChange+"\" href=\"#\" onclick=\"update('"+idToChange+"', '"+labels[a]+"')\">"+newMCP[keys[a+1]]+"</a></div>";
+        let displayValue = newMCP[labels[a]];
+
+        d.innerHTML = labels[a]+" = <a id=\""+idToChange+"\" href=\"#\" onclick=\"update('"+idToChange+"', '"+labels[a]+"')\">"+displayValue+"</a></div>";
 
         titleDiv.appendChild(d);
         b++;

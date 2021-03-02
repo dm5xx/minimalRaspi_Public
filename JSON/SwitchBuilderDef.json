@@ -3,16 +3,33 @@
         "Type": "LAN",
         "NumberOfBanks": 4,
         "IsInverted": 0,
-        "Ip_Port": "192.168.97.209:59",
-        "IsActive" : 1,
-        "IsOnError" : 0
+        "Ip_Port": "192.168.0.75:59",
+        "IsActive": 1,
+        "IsOnError": 0
     },
-    "S1" : {
-        "Type" : "Big32",
-        "NumberOfBanks" : 2,
+    "S1": {
+        "Type": "Big32",
+        "NumberOfBanks": 2,
         "IsInverted": 0,
-        "PinMap" : [ 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-        "IsActive" : 1,
-        "IsOnError" : 0
+        "PinMap": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+        ],
+        "IsActive": 1,
+        "IsOnError": 0
     }
 }

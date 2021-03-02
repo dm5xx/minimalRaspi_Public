@@ -1,6 +1,4 @@
 <?php
-
-
 $string = file_get_contents("../JSON/Token.json");
 $token = json_decode($string, true);
 
@@ -17,6 +15,15 @@ $nameOfFile .= ".json";
 
 unset($request["File"]);
 
+foreach ($request as $key => $value) {
+    if(isset($value["PinMap"]))
+    {
+        if(!is_array($value["PinMap"]))
+        {
+            $request[$key]["PinMap"] = explode(",",$value["PinMap"]);
+        }
+    }
+}
 
 $result = json_encode($request, JSON_NUMERIC_CHECK | JSON_PRETTY_PRINT);
 
