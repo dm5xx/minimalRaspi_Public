@@ -20,6 +20,7 @@ $keys = array_keys( $_POST );
 $size = sizeof($keys);
 $elementIndex = array();
 
+$old = "";
 
 for($a = 0; $a < $size; $a++)
 {
@@ -49,7 +50,7 @@ for($a = 0; $a < $size; $a++)
 
     if($isFirstElement)
     {
-        $result .= "\"".getStrippedValue($keys[$a]) . "\" : { \n";
+        $result .= "\"". getStrippedValue($_POST[$keys[$a]]). "\" : { \n";
     }
     else
     {

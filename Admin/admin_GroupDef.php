@@ -85,16 +85,18 @@ for (const [mkey, item] of Object.entries(config))
     elem.setAttribute("href", "#");
     
     elem.setAttribute('onClick', "deleteMainEntry("+keyCounter+"); return false;");
-    elem.innerHTML = "Bank_"+keyCounter +": ";        
+    elem.innerHTML = "Bank: ";        
     cell.appendChild(elem);
     mrow.appendChild(cell);
 
     var cell = document.createElement("td");
     var temp = document.createElement("input"); 
     temp.setAttribute("type", "text"); 
-    temp.setAttribute("readonly", "readonly"); 
+//    temp.setAttribute("readonly", "readonly"); 
     temp.setAttribute("name", mkey+"_"+keyCounter);
-    temp.setAttribute("value", mkey);
+
+    var replecedValue = mkey.replace("groupB","");
+    temp.setAttribute("value", replecedValue);
     cell.appendChild(temp);
     mrow.appendChild(cell);
 
@@ -108,24 +110,27 @@ for (const [mkey, item] of Object.entries(config))
     {
         var replecedKey = key.replace("group","");
 
+        if(replecedKey != indexer)
+            alert("Corrected grouplist. Please save by submitting first!");
+        
         var row = document.createElement("tr");
-        row.setAttribute("id", "row"+keyCounter+"_"+replecedKey);
+        row.setAttribute("id", "row"+keyCounter+"_"+indexer);
                 
         var cell = document.createElement("td");
         var elem = document.createElement('a');
         elem.setAttribute("href", "#");
         if(indexer+1 == size || size < 2)
-            elem.setAttribute('onClick', "addEntry("+keyCounter+","+replecedKey+"); return false;");
+            elem.setAttribute('onClick', "addEntry("+keyCounter+","+(indexer)+"); return false;");
         else
-            elem.setAttribute('onClick', "deleteEntry("+keyCounter+","+replecedKey+"); return false;");
-        elem.innerHTML = key + ": ";        
+            elem.setAttribute('onClick', "deleteEntry("+keyCounter+","+indexer+"); return false;");
+        elem.innerHTML = "group"+indexer + ": ";        
         cell.appendChild(elem);
         row.appendChild(cell);
 
         var cell = document.createElement("td");
         var temp = document.createElement("input"); 
         temp.setAttribute("type", "text"); 
-        temp.setAttribute("name", key+"_"+keyCounter);            
+        temp.setAttribute("name", "group"+indexer+"_"+keyCounter);            
         temp.setAttribute("value", value);
                         
         cell.appendChild(temp);
@@ -208,7 +213,7 @@ function addEntry(number, index)
     var cell2 = document.createElement("td");
     var temp = document.createElement("input"); 
     temp.setAttribute("type", "text"); 
-    temp.setAttribute("name", "group");        
+    temp.setAttribute("name", "group"+(index+1)+"_"+number);        
     temp.setAttribute("value", "[]");
     cell2.appendChild(temp);
     
@@ -220,7 +225,7 @@ function addEntry(number, index)
 function addMainEntry()
 {
     var newtbl = document.createElement("table");
-    newtbl.setAttribute("border", 1);
+    newtbl.setAttribute("border", 0);
     newtbl.setAttribute("id", "table_"+keyCounter);
     var newtblBody = document.createElement("tbody");
 
@@ -230,7 +235,7 @@ function addMainEntry()
     var elem = document.createElement('a');
     elem.setAttribute("href", "#");
     elem.setAttribute('onClick', "deleteMainEntry("+(keyCounter)+"); return false;");
-    elem.innerHTML = "Bank_"+keyCounter +": ";        
+    elem.innerHTML = "Bank: ";        
     cell.appendChild(elem);
     mrow.appendChild(cell);
 
@@ -238,8 +243,9 @@ function addMainEntry()
     var temp = document.createElement("input"); 
     temp.setAttribute("type", "text"); 
     temp.setAttribute("readonly", "readonly"); 
-    temp.setAttribute("name", "groupB"+keyCounter);
-    temp.setAttribute("value", "groupB"+keyCounter);
+    temp.setAttribute("name", "groupB"+keyCounter+"_"+keyCounter);
+    temp.setAttribute("value", keyCounter);
+        
     cell.appendChild(temp);
     mrow.appendChild(cell);
 
@@ -256,7 +262,7 @@ function addMainEntry()
         var cell = document.createElement("td");
         var temp = document.createElement("input"); 
         temp.setAttribute("type", "text"); 
-        temp.setAttribute("name", validKeys[a]+"_"+keyCounter);
+        temp.setAttribute("name", "group0_"+keyCounter);
         
         temp.setAttribute("value", '[]');
 
@@ -309,6 +315,13 @@ function submitValue()
 
     for(let a = 0; a < inputFields.length; a++)
     {
+        if(inputFields[a].name.startsWith("groupB"))
+        {
+            let oldName = inputFields[a].value;
+            inputFields[a].value = "groupB"+oldName;
+            inputFields[a].style.display = 'none';
+        }
+
         if(!inputFields[a].value.startsWith("group") && inputFields[a].type != "hidden")
         {
             let isStartEndValid = (inputFields[a].value.startsWith("[") && inputFields[a].value.endsWith("]"));
