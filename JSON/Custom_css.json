@@ -35,6 +35,10 @@
         "background-color": "#222222"
     },
     {
+        "Name": ".xxButtonDisabled:hover",
+        "background-color": "#222222"
+    },
+    {
         "Name": ".xxFooterReset",
         "background-color": "#222222"
     },
