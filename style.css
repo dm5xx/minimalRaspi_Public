@@ -43,10 +43,6 @@ src: url("FFFFORWA.TTF");
 
 .x1 { grid-area: x1; }
 
-body {
-    background-color: black;
-}
-
 div.BlockUserInteractionWithPage {
     position: absolute;
     top: 10%;

@@ -63,5 +63,9 @@
     {
         "Name": ".xxMenu",
         "background-color": "#003333"
+    },
+    {
+        "Name": "body",
+        "background-color": "black"
     }
 ]
