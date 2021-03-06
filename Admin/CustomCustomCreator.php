@@ -49,7 +49,7 @@ function getYourRemoteIP()
     url = remoteCon;
     window.setInterval(GetMessages, MessageRequestInterval);
     console.log("initsteps called...");
-    initSteps();
+    initSteps(GetDataPollinterval);
 }
 
 function RiseCallback(data)

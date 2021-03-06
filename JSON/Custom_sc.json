@@ -6,5 +6,6 @@
     "wrapBanks": 0,
     "hideLockAlert": 0,
     "disableNumbPadShortcuts": 0,
-    "MessageRequestInterval": 30000
+    "MessageRequestInterval": 30000,
+    "GetDataPollinterval": 5000
 }

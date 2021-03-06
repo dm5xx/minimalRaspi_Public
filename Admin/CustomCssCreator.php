@@ -20,10 +20,19 @@ for($int = 0; $int < count($dataresult); $int++ )
     $keys = array_keys($arr);
     $counter = count($keys);
     
-    for($a = 0; $a < $counter; $a++)
+    $isHover = false;
+    if(strpos($arr[$keys[0]], ":hover"))
     {
+        echo "@media (hover: hover) and (pointer: fine) {\n";
+        $isHover = true;
+    }
+
+    for($a = 0; $a < $counter; $a++)
+    {        
         if($a == 0)
+        {
             echo $arr[$keys[0]]." { \n";
+        }
         else
         {
             echo "\t".$keys[$a].": ".$arr[$keys[$a]];
@@ -34,6 +43,9 @@ for($int = 0; $int < count($dataresult); $int++ )
         }
     }
     echo "}\n";
+
+    if($isHover)
+        echo "}\n";
 }
 
 
